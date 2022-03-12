@@ -52,7 +52,7 @@ namespace StudentRegiFormWinApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='C:\WorkSpace\BCA SEM-4\C# Form App\StudentRegiFormWinApp\StudentRegiFormWinApp\stud_data.mdf';Integrated Security=True");
+            conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\WorkSpace\StudentRegiFormWinApp\StudentRegiFormWinApp\stud_data.mdf;Integrated Security=True");
             conn.Open();
         }
 
@@ -70,7 +70,21 @@ namespace StudentRegiFormWinApp
             check_hb();
             cmd = new SqlCommand("INSERT INTO studs VALUES('"+txt_fname.Text+"','"+txt_sname.Text+"','"+gen+"','"+cmb_cast.SelectedItem+"','"+img_path+"','"+strhb+"')", conn);
             cmd.ExecuteNonQuery();
-            MessageBox.Show("Record Inserted Successfully");
+            da = new SqlDataAdapter("SELECT s_id FROM studs where s_fname='"+txt_fname.Text+"' and s_sname = '"+txt_sname.Text+"' ",conn);
+            dt = new DataTable();
+            da.Fill(dt);
+            MessageBox.Show("Record Inserted Successfully on Id = "+dt.Rows[0][0].ToString());
+            txt_id.Text = "";
+            txt_fname.Text = "";
+            txt_sname.Text = "";
+            rdo_m.Checked = false;
+            rdo_fe.Checked = false;
+            for (int i = 0; i<chkbl_hb.Items.Count; i++)
+            {
+                chkbl_hb.SetItemChecked(i, false);
+            }
+            img_path = "";
+            pic_img.Image = null;
         }
 
         private void btn_choose_Click(object sender, EventArgs e)
