@@ -151,10 +151,16 @@ namespace StudentRegiFormWinApp
 
         private void txt_id_TextChanged(object sender, EventArgs e)
         {
+            txt_fname.Text = "";
+            txt_sname.Text = "";
+            rdo_m.Checked = false;
+            rdo_fe.Checked = false;
             for (int i = 0; i<chkbl_hb.Items.Count; i++)
             {
                 chkbl_hb.SetItemChecked(i, false);
             }
+            img_path = "";
+            pic_img.Image = null;
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
