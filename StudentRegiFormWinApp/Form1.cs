@@ -52,7 +52,7 @@ namespace StudentRegiFormWinApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\WorkSpace\StudentRegiFormWinApp\StudentRegiFormWinApp\stud_data.mdf;Integrated Security=True");
+            conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\WorkSpace\StudentRegiFormWinApp\StudentRegiFormWinApp\stud_data.mdf;Integrated Security=True");
             conn.Open();
         }
 
